@@ -12,7 +12,7 @@ public class SelIntroduction {
         //Invoking Browser
         //initiate web driver selenium
         //menggunakan chromedriver.exe
-//        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
 //        //menggunakan selenium manager
 //        System.setProperty("webdriver.chrome.driver", "C:/Users/Lenovo/Downloads/chromedriver-win64/chromedriver-win64/chromedriver.exe");
 
@@ -21,7 +21,7 @@ public class SelIntroduction {
 //        System.setProperty("webdriver.gecko.driver", "C:/Users/Lenovo/Downloads/geckodriver-v0.35.0-win-aarch64/geckodriver.exe");
 
         //edge launch
-        WebDriver driver = new EdgeDriver();
+//        WebDriver driver = new EdgeDriver();
 //        System.setProperty("webdriver.edge.driver", "C:/Users/Lenovo/Downloads/edgedriver_win64/msedgedriver.exe");
 
         driver.get("https://rahulshettyacademy.com/");
