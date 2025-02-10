@@ -12,7 +12,18 @@ public class StaticDropDown {
         //dropdown with select tag
         WebElement staticDropdown = driver.findElement(By.id("ctl00_mainContent_DropDownListCurrency"));
         Select dropdown = new Select(staticDropdown);
+
+        //select by index
         dropdown.selectByIndex(3);
         System.out.println(dropdown.getFirstSelectedOption().getText());
+
+        //select by text
+        dropdown.selectByVisibleText("AED");
+        System.out.println(dropdown.getFirstSelectedOption().getText());
+
+        dropdown.selectByValue("INR");
+        System.out.println(dropdown.getFirstSelectedOption().getText());
+
+
     }
 }
