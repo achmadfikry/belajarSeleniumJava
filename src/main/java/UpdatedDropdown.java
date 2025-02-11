@@ -12,7 +12,7 @@ public class UpdatedDropdown {
         System.out.println(driver.findElement(By.xpath("//div[contains(text(),'Adult')]")).getText());
         driver.findElement(By.xpath("//div[normalize-space()='Passengers']")).click();
         Thread.sleep(2000);
-        int i = 1;
+//        int i = 1;
 //        while(i < 5){ //4 times
 //            driver.findElement(By.xpath("(//*[name()='path'][@fill-rule='nonzero'])[10]")).click();
 //            i++;
