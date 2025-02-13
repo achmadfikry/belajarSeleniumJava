@@ -1,5 +1,4 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,7 +7,7 @@ import org.testng.Assert;
 import java.time.Duration;
 import java.util.List;
 
-public class OrderTiket {
+public class OrderTiketPesawat {
     public static void main(String[] args) throws InterruptedException {
         List<WebElement> options;
         WebDriver driver = new ChromeDriver();
@@ -57,7 +56,6 @@ public class OrderTiket {
         Assert.assertTrue(driver.findElement(By.cssSelector("div[data-testid='clickable-arrival-input']")).getText().contains("Yogya"));
 
         //select departure
-//        driver.findElement(By.cssSelector("label[class*='SearchForm_round_trip']")).click();
         driver.findElement(By.xpath("(//p[contains(@class, 'SearchForm_departure_return')])[1]")).click();
         Thread.sleep(1000);
 //        driver.findElement(By.cssSelector("span[aria-label='24 Maret 2025 Senin']")).click();
@@ -67,36 +65,44 @@ public class OrderTiket {
 //        driver.findElement(By.cssSelector("span[aria-label='28 Maret 2025 Jumat']")).click();
 //        driver.findElement(By.xpath("(//button[contains(@class,'Day_day_selected')])[2]")).click();
 
-        driver.findElement(By.cssSelector("div[class*='SearchForm_passenger_picker']")).click();
-        Thread.sleep(1000);
-//        for(int j = 1; j < 4; j++){
-//            driver.findElement(By.xpath("(//button[contains (@class, 'QuantityEditor_operation_button')])[2]")).click();
-//        }
-
-        driver.findElement(By.xpath("(//button[contains(@class, 'PassengerForm_cabin')])[1]")).click();
-        driver.findElement(By.cssSelector("button[class*='PassengerForm_btn_save']")).click();
         driver.findElement(By.cssSelector("button[class*='SearchForm_btn_submit']")).click();
         Thread.sleep(2000);
         Assert.assertTrue(driver.getCurrentUrl().contains("/pesawat/search?"));
 
+        //select one of card in the list
         driver.findElement(By.xpath("(//div[contains(@data-testid, 'srp-flight-card')])[1]")).click();
 
+        //review page
         Thread.sleep(2000);
         Assert.assertTrue(driver.getCurrentUrl().contains("/pesawat/review?"));
         driver.findElement(By.xpath("(//button[contains(@class, 'TypeCard_select_btn')])")).click();
 
-        Thread.sleep(4000);
+        //cart page
+        Thread.sleep(2000);
         Assert.assertTrue(driver.getCurrentUrl().contains("/cart/flight"));
         driver.findElement(By.xpath("(//span[ contains (@class,'Radio_icon__GF_Hw')])[1]")).click();
-        driver.findElement(By.xpath("(//input[@id='full-name'])[1]")).click();
-        driver.findElement(By.xpath("(//input[@id='full-name'])[1]")).sendKeys("Achmad Fikry");
-        driver.findElement(By.xpath("//input[@id='phone-number']")).sendKeys("089670755821");
-        //        driver.findElement(By.xpath("//input[@type='checkbox' and contains(@class, 'Toggle_hidden_checkbox')]")).click();
+        driver.findElement(By.xpath("(//div[@class='styles_inline_input_wrapper__fW9I0'])[1]")).click();
+        Thread.sleep(1000);
+//        driver.findElement(By.xpath("(//input[contains(@id,'full-name')])[1]")).sendKeys("Achmad Fikry");
+
+        driver.findElement(By.xpath("(//div[@class='styles_inline_input_wrapper__fW9I0'])[2]")).click();
+        Thread.sleep(1000);
+//        driver.findElement(By.xpath("//input[@id='phone-number']")) .sendKeys("089670755821");
+
+        driver.findElement(By.xpath("(//div[@class='styles_inline_input_wrapper__fW9I0'])[3]")).click();
+        Thread.sleep(1000);
 //        driver.findElement(By.xpath("//input[@id='email-address']")).sendKeys("achmadfikryy@gmail.com");
-        driver.findElement(By.xpath("(//input[@id='full-name'])[2]")).sendKeys("Achmad Fikry");
+
+        driver.findElement(By.xpath("(//div[@class='styles_inline_input_wrapper__fW9I0'])[4]")).click();
+        Thread.sleep(1000);
+//        driver.findElement(By.xpath("(//input[@id='full-name'])[2]")).sendKeys("Achmad Fikry");
         driver.findElement(By.xpath("(//span[ contains (@class,'Radio_icon__GF_Hw')])[4]")).click();
+
         driver.findElement(By.xpath("(//button[ contains (@class,'Button_button__tpkRA') and contains(@class,'Button_variant_primary')])[last()]")).click();
+
+        driver.findElement(By.xpath("(//button[contains(@class, 'Button_button__tpkRA')])[last()]")).click();
 
 
     }
+
 }
