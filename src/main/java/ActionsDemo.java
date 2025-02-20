@@ -13,10 +13,11 @@ public class ActionsDemo {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get("https://www.amazon.com/");
 
         Actions actions = new Actions(driver);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("twotabsearchtextbox")));
         actions.moveToElement(driver.findElement(By.id("twotabsearchtextbox"))).click().keyDown(Keys.SHIFT).sendKeys("hello").doubleClick().build().perform();
         actions.moveToElement(driver.findElement(By.xpath("//a[@id='nav-link-accountList']"))).build().perform();
 
