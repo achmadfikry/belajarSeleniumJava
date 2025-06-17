@@ -23,6 +23,7 @@ public class JavaScriptExecutor {
         Thread.sleep(3000);
         js.executeScript("document.querySelector('.tableFixHead').scrollTop=5000");
 
+        //calculate sum of amount on last column
         //xpath: //td[4]
         //css: td:nth-child(4)
         List<WebElement> values = driver.findElements(By.cssSelector(".tableFixHead td:nth-child(4)"));
