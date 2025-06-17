@@ -7,6 +7,9 @@ public class SSLCheck {
     public static void main(String[] args) {
         ChromeOptions options = new ChromeOptions();
         options.setAcceptInsecureCerts(true);
+        Proxy proxy = new Proxy();
+        proxy.setHttpProxy("ipaddress:4444");
+        options.setCapability("proxy", proxy);
         WebDriver driver = new ChromeDriver(options); //intimating options to chrome driver
         driver.manage().window().maximize();
         driver.get("https://expired.badssl.com/");
