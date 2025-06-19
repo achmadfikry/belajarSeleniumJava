@@ -55,5 +55,6 @@ public class test1 {
 
         //print all the names of array list which has length more than 4 words
         names.stream().filter(s->s.length()>4).forEach(s->System.out.println(s));
+        names.stream().filter(s->s.length()>4).limit(1).forEach(s->System.out.println(s));
     }
 }
