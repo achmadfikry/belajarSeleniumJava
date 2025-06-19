@@ -39,9 +39,17 @@ public class test1 {
         System.out.println(c);
 
         //create stream
-        Stream.of("Abhijeet", "Don", "Alekhya", "Adam", "Ram").filter(s->s.startsWith("A")).count();
+        //Stream.of("Abhijeet", "Don", "Alekhya", "Adam", "Ram").filter(s->s.startsWith("A")).count();
         // count will be executed if filter retur true, so
         //there is no life for intermediate op if there is no termional op
         //terminal op will execute only if intermediate op (filter) return true
+
+
+        //if it is more than one action, thank we can write like this
+        long d = Stream.of("Abhijeet", "Don", "Alekhya", "Adam", "Ram").filter(s->{
+            s.startsWith("A");
+            return false; //because the return is false, then count will not be executed
+        }).count();
+        System.out.println(d);
     }
 }
