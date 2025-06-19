@@ -51,5 +51,9 @@ public class test1 {
             return false; //because the return is false, then count will not be executed
         }).count();
         System.out.println(d);
+
+
+        //print all the names of array list which has length more than 4 words
+        names.stream().filter(s->s.length()>4).forEach(s->System.out.println(s));
     }
 }
