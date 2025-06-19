@@ -25,7 +25,7 @@ public class test1 {
         System.out.println(count);
     }
 
-    @Test
+//    @Test
     public void streamFilter() {
         ArrayList<String> names = new ArrayList<String>();
         names.add("Abhijeet");
@@ -56,5 +56,13 @@ public class test1 {
         //print all the names of array list which has length more than 4 words
         names.stream().filter(s->s.length()>4).forEach(s->System.out.println(s));
         names.stream().filter(s->s.length()>4).limit(1).forEach(s->System.out.println(s));
+    }
+
+    @Test
+    public void streamMap(){
+        //print names which has last letter as "a" with uppercase
+        Stream.of("Abhijeet", "Don", "Alekhya", "Adam", "Rama").filter(s -> s.endsWith("a")).map(s->s.toUpperCase()).forEach(s->System.out.println(s));
+
+        //print names which start letter as "a" with uppercase and sorted
     }
 }
