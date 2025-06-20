@@ -61,16 +61,24 @@ public class test1 {
 
     @Test
     public void streamMap(){
+
+        ArrayList<String> names = new ArrayList<String>();
+        names.add("man");
+        names.add("Don");
+        names.add("woman");
+
         //print names which has last letter as "a" with uppercase
         // "Abhijeet", "Don", "Alekhya", "Adam", "Rama" is array
         Stream.of("Abhijeet", "Don", "Alekhya", "Adam", "Rama").filter(s -> s.endsWith("a")).map(s->s.toUpperCase()).forEach(s->System.out.println(s));
 
         //print names which start letter as "a" with uppercase and sorted
         //convert array to array list
-        List<String> names = Arrays.asList("Azbhijeet", "Don", "Alekhya", "Adam", "Rama");
-        names.stream().filter(s->s.startsWith("A")).sorted().map(s->s.toUpperCase()).forEach(s->System.out.println(s));
+        List<String> names1 = Arrays.asList("Azbhijeet", "Don", "Alekhya", "Adam", "Rama");
+        names1.stream().filter(s->s.startsWith("A")).sorted().map(s->s.toUpperCase()).forEach(s->System.out.println(s));
 
-
+        //merge two array list
+        Stream<String> newStream = Stream.concat(names.stream(), names1.stream());
+        newStream.sorted().forEach(s->System.out.println(s));
 
     }
 }
