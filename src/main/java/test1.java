@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -61,8 +62,15 @@ public class test1 {
     @Test
     public void streamMap(){
         //print names which has last letter as "a" with uppercase
+        // "Abhijeet", "Don", "Alekhya", "Adam", "Rama" is array
         Stream.of("Abhijeet", "Don", "Alekhya", "Adam", "Rama").filter(s -> s.endsWith("a")).map(s->s.toUpperCase()).forEach(s->System.out.println(s));
 
         //print names which start letter as "a" with uppercase and sorted
+        //convert array to array list
+        List<String> names = Arrays.asList("Azbhijeet", "Don", "Alekhya", "Adam", "Rama");
+        names.stream().filter(s->s.startsWith("A")).sorted().map(s->s.toUpperCase()).forEach(s->System.out.println(s));
+
+
+
     }
 }
