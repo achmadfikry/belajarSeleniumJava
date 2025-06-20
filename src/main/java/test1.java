@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class test1 {
@@ -60,7 +61,7 @@ public class test1 {
         names.stream().filter(s->s.length()>4).limit(1).forEach(s->System.out.println(s));
     }
 
-    @Test
+//    @Test
     public void streamMap(){
 
         ArrayList<String> names = new ArrayList<String>();
@@ -86,5 +87,12 @@ public class test1 {
         System.out.println(flag);
         Assert.assertTrue(flag);
 
+    }
+
+    @Test
+    public void streamCollect(){
+        //collect: will be collect all the result whatever it returned from previous method, it could be map or anything
+        List<String> ls = Stream.of("Azbhijeet", "Don", "Alekhya", "Adam", "Rama").filter(s->s.endsWith("a")).map(s->s.toUpperCase()).collect(Collectors.toList()); //create new list based on modification
+        System.out.println(ls.get(0));
     }
 }
