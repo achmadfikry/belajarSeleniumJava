@@ -94,5 +94,18 @@ public class test1 {
         //collect: will be collect all the result whatever it returned from previous method, it could be map or anything
         List<String> ls = Stream.of("Azbhijeet", "Don", "Alekhya", "Adam", "Rama").filter(s->s.endsWith("a")).map(s->s.toUpperCase()).collect(Collectors.toList()); //create new list based on modification
         System.out.println(ls.get(0));
+
+
+        //print unique numbers from this array
+        //sort the array
+        List<Integer> values = Arrays.asList(3,2,2,7,5,1,9,7);
+
+        //1. convert into stream: values.stream()
+        //2. use distinct for unique
+        values.stream().distinct().forEach(s->System.out.println(s));
+
+        //print only second index
+        List<Integer> li = values.stream().distinct().sorted().collect(Collectors.toList());
+        System.out.println(li.get(2));
     }
 }
