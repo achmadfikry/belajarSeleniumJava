@@ -39,5 +39,19 @@ public class LiveDemo {
 
 
 
+        //Get price of each vegetable
+        //scan the name column with getText -> Beans -> print the price of the Beans
+        //filter is used to apply some condition
+        //so before doing map & get the price of veggie, we had another stream first to filter, so map only receive web element of oly Beans
+        //so once it receive web element of Beans, it get the price of that web element only
+        // and you have to send us the argument s->getPriceVeggie()
+        List<String> price = elementsList.stream().filter(s->s.getText().contains("Beans")).map(s->getPriceVeggie(s)).collect(Collectors.toList());
+        price.forEach(a->System.out.println(a));
+    }
+
+    private static String getPriceVeggie(WebElement s   ) {
+        ////tr//td[1]/following-sibling::td[1]
+        String priceValue = s.findElement(By.xpath("following-sibling::td[1]")).getText();
+        return priceValue;
     }
 }
