@@ -13,5 +13,14 @@ public class RelativeLoc {
         WebElement nameEditBox = driver.findElement(By.cssSelector("[name='name']"));
         System.out.println(driver.findElement(with(By.tagName("label")).above(nameEditBox)).getText());
 
+        WebElement dateofbirth = driver.findElement(By.cssSelector("[for='dateofBirth']"));
+        driver.findElement(with(By.tagName("input")).below(dateofbirth)).click();
+
+        WebElement iceCreamLabel = driver.findElement(By.xpath("//label[text()='Check me out if you Love IceCreams!']"));
+        driver.findElement(with(By.tagName("input")).toLeftOf(iceCreamLabel)).click();
+
+        WebElement rdb = driver.findElement(By.id("inlineRadio1"));
+        System.out.println(driver.findElement(with(By.tagName("label")).toRightOf(rdb)).getText());
+
     }
 }
