@@ -45,8 +45,21 @@ public class LiveDemo {
         //so before doing map & get the price of veggie, we had another stream first to filter, so map only receive web element of oly Beans
         //so once it receive web element of Beans, it get the price of that web element only
         // and you have to send us the argument s->getPriceVeggie()
-        List<String> price = elementsList.stream().filter(s->s.getText().contains("Beans")).map(s->getPriceVeggie(s)).collect(Collectors.toList());
-        price.forEach(a->System.out.println(a));
+        List<String> price;
+//        price = elementsList.stream().filter(s->s.getText().contains("Beans")).map(s->getPriceVeggie(s)).collect(Collectors.toList());
+//        price.forEach(a->System.out.println(a));
+
+        //Get price of each vegetable on the next page
+        do{
+            List<WebElement> rows = driver.findElements(By.xpath("//tr//td[1]"));
+            price = rows.stream().filter(s->s.getText().contains("Rice")).map(s->getPriceVeggie(s)).collect(Collectors.toList());
+            price.forEach(a->System.out.println(a));
+
+            if (price.size() < 1){
+                driver.findElement(By.cssSelector("[aria-label='Next']")).click();
+            }
+
+        }while(price.size() < 1);
     }
 
     private static String getPriceVeggie(WebElement s   ) {
