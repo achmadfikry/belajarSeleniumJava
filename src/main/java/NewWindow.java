@@ -13,6 +13,7 @@ public class NewWindow {
         driver.manage().window().maximize();
 
         driver.get("https://www.rahulshettyacademy.com/angularpractice/");
+        driver.switchTo().newWindow(WindowType.TAB);
         driver.switchTo().newWindow(WindowType.WINDOW);
 
         Set<String> handles = driver.getWindowHandles();
@@ -28,6 +29,11 @@ public class NewWindow {
         //screenshot
         File file = name.getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file, new File("logo.png"));
+
+        //get height & width
+        System.out.println(name.getRect().getDimension().getHeight());
+        System.out.println(name.getRect().getDimension().getWidth());
+
 //        driver.quit();
 
     }
