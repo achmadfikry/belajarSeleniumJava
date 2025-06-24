@@ -1,13 +1,14 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WindowType;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 
 public class NewWindow {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
@@ -21,7 +22,10 @@ public class NewWindow {
         driver.get("https://www.rahulshettyacademy.com/");
         String courseName = driver.findElements(By.cssSelector("a[href*='https://courses.rahulshettyacademy.com/p']")).get(1).getText();
         driver.switchTo().window(parentWindowId); //switch to the child window directly (still blank page)
-        driver.findElement(By.cssSelector("[name='name']")).sendKeys(courseName);
+        WebElement name = driver.findElement(By.cssSelector("[name='name']"));
+        name.sendKeys(courseName);
+        File file = name.getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(file, new File("logo.png"));
 //        driver.quit();
 
     }
