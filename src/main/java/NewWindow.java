@@ -24,6 +24,8 @@ public class NewWindow {
         driver.switchTo().window(parentWindowId); //switch to the child window directly (still blank page)
         WebElement name = driver.findElement(By.cssSelector("[name='name']"));
         name.sendKeys(courseName);
+
+        //screenshot
         File file = name.getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(file, new File("logo.png"));
 //        driver.quit();
