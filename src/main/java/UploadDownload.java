@@ -1,7 +1,11 @@
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -23,7 +27,13 @@ public class UploadDownload {
         upload.sendKeys("C:/Users/Lenovo/Downloads/download.xlsx");
 
         //Wait for success message to show up and wait for disappear
-
+        By toastLocator = By.cssSelector(".Toastify__toast-body div:nth-child(2)");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(toastLocator));
+        String toastText = driver.findElement(toastLocator).getText();
+        System.out.println(toastText);
+        Assert.assertEquals("Updated Excel Data Successfully.", toastText);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(toastLocator));
 
         //Verify updated excel data showing in the web table
 
