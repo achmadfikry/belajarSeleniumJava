@@ -11,6 +11,7 @@ import java.time.Duration;
 
 public class UploadDownload {
     public static void main(String[] args) {
+        String fruitName = "Apple";
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
@@ -35,8 +36,16 @@ public class UploadDownload {
         Assert.assertEquals("Updated Excel Data Successfully.", toastText);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(toastLocator));
 
-        //Verify updated excel data showing in the web table
 
+        //Verify updated excel data showing in the web table
+        //using xpath to get apple price & not hard-coded
+        //so go to apple row & get the price value
+
+        //this locator is travel from child to parent & parent to child for get the price
+        String priceColumn = driver.findElement(By.xpath("//div[text()='Price']")).getAttribute("data-column-id");
+        String actualPrice = driver.findElement(By.xpath("//div[text()='"+fruitName+"']/parent::div/parent::div/div[@id='cell-"+priceColumn+"-undefined']")).getText();
+        System.out.println(actualPrice);
+        Assert.assertEquals("345",actualPrice);
 
     }
 }
